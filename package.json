@@ -1,0 +1,29 @@
+{
+  "name": "dev-the-gathering",
+  "version": "1.0.0",
+  "description": "A Magic The gathering API to create, search and share DECKS built using NODE.JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h3nr1ke/dev-the-gathering.git"
+  },
+  "keywords": [
+    "node.js",
+    "api",
+    "magic-the-gathering"
+  ],
+  "author": "Henrique Deodato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/h3nr1ke/dev-the-gathering/issues"
+  },
+  "homepage": "https://github.com/h3nr1ke/dev-the-gathering#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.15.1",
+    "morgan": "^1.9.1"
+  }
+}
