@@ -15,24 +15,21 @@ const MongoClient = require('mongodb').MongoClient;
 require('dotenv-safe').load();
 
 // ENDPOINTS
-app.get('/login', (req, res, next) => {
-    console.log("/login");
-    res.status(200).send('/test');
-});
+const routes = require('./routes'); // inside routes folder, get the index.js file
 
 app.use(logger('dev'));
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// create the server and start listening
-var server = http.createServer(app);
+app.use(routes);
 
 // connects do the database and create a global var to share the connection
 MongoClient.connect( process.env.MONGO_CONNECTION, (err, database) => {
     if (err) return console.log(err)
     global.db = database.db( process.env.MONGO_DB ) // database name
     
+    // create the server and start listening
+    var server = http.createServer(app);
     // since we have a database connection, start the server...
     server.listen(3000);
 });
