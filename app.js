@@ -24,12 +24,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
 // connects do the database and create a global var to share the connection
-MongoClient.connect( process.env.MONGO_CONNECTION, (err, database) => {
-    if (err) return console.log(err)
-    global.db = database.db( process.env.MONGO_DB ) // database name
-    
-    // create the server and start listening
-    var server = http.createServer(app);
-    // since we have a database connection, start the server...
-    server.listen(3000);
+MongoClient.connect( 
+    process.env.MONGO_CONNECTION, 
+    { useNewUrlParser: true }, 
+    (err, database) => {
+        if (err) return console.log(err)
+        global.db = database.db( process.env.MONGO_DB ) // database name
+        
+        // create the server and start listening
+        var server = http.createServer(app);
+        // since we have a database connection, start the server...
+        server.listen(3000);
 });
