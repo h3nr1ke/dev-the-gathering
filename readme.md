@@ -2,9 +2,9 @@
 
 A tool to search Magic The Gathering Cards and create your own decks lists
 
-All card data is available due the huge and amazing work from (mtgjson.com)[https://mtgjson.com]
+All card data is available due the huge and amazing work from [mtgjson.com](https://mtgjson.com)
 
-The deck structure is the same as defined by mtgjson (here)[https://mtgjson.com/files/deck/]
+The deck structure is the same as defined by mtgjson [here](https://mtgjson.com/files/deck/)
 
 ```
 {
@@ -33,3 +33,4 @@ Install the modules
 
     npm install
 
+    mongod --dbpath PATH

@@ -5,6 +5,9 @@
 
 const http = require('http');
 const express = require('express');
+const express_graphql = require('express-graphql');
+const { buildSchema } = require('graphql');
+
 const app = express();
 const logger = require('morgan');
 const helmet = require('helmet');
@@ -21,6 +24,21 @@ app.use(logger('dev'));
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// load the individual configurations for the itens
+const card = require('./routes/cards.js');
+
+//single endpoint for graphQL
+app.use('/graphql', express_graphql({
+    schema: buildSchema(
+        card.schema
+    ),
+    rootValue: {
+        ...card.getRoot()
+    },
+    graphiql: true
+}));
+
 app.use(routes);
 
 // connects do the database and create a global var to share the connection
